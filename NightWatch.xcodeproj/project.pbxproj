@@ -14,6 +14,7 @@
 		949A340F2C191DBA0077B1A2 /* NightWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A340E2C191DBA0077B1A2 /* NightWatchTests.swift */; };
 		949A34192C191DBA0077B1A2 /* NightWatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A34182C191DBA0077B1A2 /* NightWatchUITests.swift */; };
 		949A341B2C191DBA0077B1A2 /* NightWatchUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A341A2C191DBA0077B1A2 /* NightWatchUITestsLaunchTests.swift */; };
+		949A34292C1940460077B1A2 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A34282C1940460077B1A2 /* SwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		949A34142C191DBA0077B1A2 /* NightWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NightWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		949A34182C191DBA0077B1A2 /* NightWatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightWatchUITests.swift; sourceTree = "<group>"; };
 		949A341A2C191DBA0077B1A2 /* NightWatchUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightWatchUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		949A34282C1940460077B1A2 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		949A33FC2C191DB80077B1A2 /* NightWatch */ = {
 			isa = PBXGroup;
 			children = (
+				949A34272C1940210077B1A2 /* Experiments */,
 				949A33FD2C191DB80077B1A2 /* NightWatchApp.swift */,
 				949A33FF2C191DB80077B1A2 /* ContentView.swift */,
 				949A34012C191DBA0077B1A2 /* Assets.xcassets */,
@@ -125,6 +128,14 @@
 				949A341A2C191DBA0077B1A2 /* NightWatchUITestsLaunchTests.swift */,
 			);
 			path = NightWatchUITests;
+			sourceTree = "<group>";
+		};
+		949A34272C1940210077B1A2 /* Experiments */ = {
+			isa = PBXGroup;
+			children = (
+				949A34282C1940460077B1A2 /* SwiftUIView.swift */,
+			);
+			path = Experiments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 			files = (
 				949A34002C191DB80077B1A2 /* ContentView.swift in Sources */,
 				949A33FE2C191DB80077B1A2 /* NightWatchApp.swift in Sources */,
+				949A34292C1940460077B1A2 /* SwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

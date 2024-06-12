@@ -13,5 +13,5 @@ struct NightWatchApp: App {
         WindowGroup {
             ContentView()
         }
-    }
+    } 
 }
