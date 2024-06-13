@@ -11,6 +11,10 @@
 		941F1D5F2C1A52760042983C /* UIGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F1D5E2C1A52760042983C /* UIGrid.swift */; };
 		941F1D612C1A85830042983C /* UINavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F1D602C1A85830042983C /* UINavigation.swift */; };
 		941F1D632C1A8F040042983C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F1D622C1A8F040042983C /* DetailView.swift */; };
+		941F1D652C1A92E10042983C /* UITabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F1D642C1A92E10042983C /* UITabView.swift */; };
+		941F1D672C1A983A0042983C /* NightWatchTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F1D662C1A983A0042983C /* NightWatchTasks.swift */; };
+		941F1D692C1A9BA00042983C /* MarkCompleteExperiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F1D682C1A9B9F0042983C /* MarkCompleteExperiment.swift */; };
+		941F1D6B2C1B5FB30042983C /* NightWatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F1D6A2C1B5FB30042983C /* NightWatchViewModel.swift */; };
 		949A33FE2C191DB80077B1A2 /* NightWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A33FD2C191DB80077B1A2 /* NightWatchApp.swift */; };
 		949A34002C191DB80077B1A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A33FF2C191DB80077B1A2 /* ContentView.swift */; };
 		949A34022C191DBA0077B1A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 949A34012C191DBA0077B1A2 /* Assets.xcassets */; };
@@ -43,6 +47,10 @@
 		941F1D5E2C1A52760042983C /* UIGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGrid.swift; sourceTree = "<group>"; };
 		941F1D602C1A85830042983C /* UINavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigation.swift; sourceTree = "<group>"; };
 		941F1D622C1A8F040042983C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		941F1D642C1A92E10042983C /* UITabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabView.swift; sourceTree = "<group>"; };
+		941F1D662C1A983A0042983C /* NightWatchTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightWatchTasks.swift; sourceTree = "<group>"; };
+		941F1D682C1A9B9F0042983C /* MarkCompleteExperiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkCompleteExperiment.swift; sourceTree = "<group>"; };
+		941F1D6A2C1B5FB30042983C /* NightWatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightWatchViewModel.swift; sourceTree = "<group>"; };
 		949A33FA2C191DB80077B1A2 /* NightWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		949A33FD2C191DB80077B1A2 /* NightWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightWatchApp.swift; sourceTree = "<group>"; };
 		949A33FF2C191DB80077B1A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +118,8 @@
 				949A34012C191DBA0077B1A2 /* Assets.xcassets */,
 				949A34032C191DBA0077B1A2 /* Preview Content */,
 				941F1D622C1A8F040042983C /* DetailView.swift */,
+				941F1D662C1A983A0042983C /* NightWatchTasks.swift */,
+				941F1D6A2C1B5FB30042983C /* NightWatchViewModel.swift */,
 			);
 			path = NightWatch;
 			sourceTree = "<group>";
@@ -146,6 +156,8 @@
 				941F1D5C2C1A3BC40042983C /* UIList.swift */,
 				941F1D5E2C1A52760042983C /* UIGrid.swift */,
 				941F1D602C1A85830042983C /* UINavigation.swift */,
+				941F1D642C1A92E10042983C /* UITabView.swift */,
+				941F1D682C1A9B9F0042983C /* MarkCompleteExperiment.swift */,
 			);
 			path = Experiments;
 			sourceTree = "<group>";
@@ -281,9 +293,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				949A34002C191DB80077B1A2 /* ContentView.swift in Sources */,
+				941F1D6B2C1B5FB30042983C /* NightWatchViewModel.swift in Sources */,
 				941F1D612C1A85830042983C /* UINavigation.swift in Sources */,
+				941F1D652C1A92E10042983C /* UITabView.swift in Sources */,
 				941F1D5F2C1A52760042983C /* UIGrid.swift in Sources */,
+				941F1D692C1A9BA00042983C /* MarkCompleteExperiment.swift in Sources */,
 				941F1D632C1A8F040042983C /* DetailView.swift in Sources */,
+				941F1D672C1A983A0042983C /* NightWatchTasks.swift in Sources */,
 				941F1D5D2C1A3BC40042983C /* UIList.swift in Sources */,
 				949A33FE2C191DB80077B1A2 /* NightWatchApp.swift in Sources */,
 				949A34292C1940460077B1A2 /* SwiftUIView.swift in Sources */,

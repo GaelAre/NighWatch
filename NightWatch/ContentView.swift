@@ -7,66 +7,116 @@
 
 import SwiftUI
 
-let nightlyTasks = [
-    "Check all the windows",
-    "Check all the doors",
-    "Check that the safe is locked",
-    "Check mailbox",
-    "Inspect security cameras",
-    "Clear ice from sidewalks",
-    "Document \"unusual and weird\" occurrences"
-]
-
-let WeeklyTasks = [
-    "Check inside all vacant rooms",
-    "Walk the perimeter of property"
-]
-
-let MonthlyTasks = [
-    "Test security alarm",
-    "Test motion detectors",
-    "Test smoke alarms"
-]
-
-
-struct ContentView: View 
-{
+struct ContentView: View {
+    @Bindable var Nightwatchviewmodel = NightWatchViewModel()
+    @State private var FocusModeOn = false
+    @State private var resetAlertShowing = false
+    
     var body: some View {
         NavigationStack {
             List {
                 Section(content: {
-                    ForEach(nightlyTasks, id: \.self) {
-                        taskname in
-                        NavigationLink(taskname) {
-                            DetailScreen(taskName: taskname)
+                    ForEach($Nightwatchviewmodel.nightlyTasks) {
+                        task in
+                        if FocusModeOn == false || (FocusModeOn && task.wrappedValue.isCompleted == false) {
+                            NavigationLink {
+                                DetailScreen(task: task)
+                            } label: {
+                                TaskRow(task: task.wrappedValue)
                         }
+                        } else {
+                            EmptyView()
+                        }
+                    } .onDelete { indexSet in
+                        Nightwatchviewmodel.nightlyTasks.remove(atOffsets: indexSet)
                     }
+                    .onMove(perform: { indices, newOffset in
+                        Nightwatchviewmodel.nightlyTasks.move(fromOffsets: indices, toOffset: newOffset)
+                    })
                 }, header: {
                     TaskSectionHeader(SymbolName: "moon.stars", HeaderText: "Nightly Tasks")
                 })
                 Section(content: {
-                    ForEach(WeeklyTasks, id: \.self) {
-                        taskname in
-                        NavigationLink(taskname) {
-                            DetailScreen(taskName: taskname)
+                    ForEach($Nightwatchviewmodel.WeeklyTasks) {
+                        task in
+                        if FocusModeOn == false || (FocusModeOn && task.wrappedValue.isCompleted == false) {
+                            NavigationLink {
+                                DetailScreen(task: task)
+                            } label: {
+                                TaskRow(task: task.wrappedValue)
                         }
+                        } else {
+                            EmptyView()
+                        }
+                    } .onDelete { indexSet in
+                        Nightwatchviewmodel.nightlyTasks.remove(atOffsets: indexSet)
                     }
+                    .onMove(perform: { indices, newOffset in
+                        Nightwatchviewmodel.nightlyTasks.move(fromOffsets: indices, toOffset: newOffset)
+                    })
                 }, header: {
                     TaskSectionHeader(SymbolName: "sun.max", HeaderText: "Weekly Tasks")
                 })
                 Section(content: {
-                    ForEach(MonthlyTasks, id: \.self) {
-                        taskname in
-                        NavigationLink(taskname) {
-                            DetailScreen(taskName: taskname)
+                    ForEach($Nightwatchviewmodel.MonthlyTasks) {
+                        task in
+                        if FocusModeOn == false || (FocusModeOn && task.wrappedValue.isCompleted == false) {
+                            NavigationLink {
+                                DetailScreen(task: task)
+                            } label: {
+                                TaskRow(task: task.wrappedValue)
                         }
+                        } else {
+                            EmptyView()
+                        }
+                    } .onDelete { indexSet in
+                        Nightwatchviewmodel.nightlyTasks.remove(atOffsets: indexSet)
                     }
+                    .onMove(perform: { indices, newOffset in
+                        Nightwatchviewmodel.nightlyTasks.move(fromOffsets: indices, toOffset: newOffset)
+                    })
                 }, header: {
                     TaskSectionHeader(SymbolName: "Calendar", HeaderText: "Monthly Tasks")
                 })
             }
             .listStyle(GroupedListStyle())
             .navigationTitle(Text("Home"))
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Toggle(isOn: $FocusModeOn, label: {
+                        Text("Focus Mode")
+                    })
+                    .toggleStyle(.switch)
+                    .frame(width: 175)
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    EditButton()
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button (action: {
+                        resetAlertShowing = true
+                    }, label: {
+                        Text("Reset")
+                    })
+                }
+            }
+        }
+        .alert("Reset List", isPresented: $resetAlertShowing) {
+            Button(role: .cancel) {
+                
+            } label: {
+                Text("Cancel")
+            }
+            Button(role: .destructive) {
+                let refreshedNightWatch = NightWatchViewModel()
+                self.Nightwatchviewmodel.nightlyTasks = refreshedNightWatch.nightlyTasks
+                self.Nightwatchviewmodel.WeeklyTasks = refreshedNightWatch.WeeklyTasks
+                self.Nightwatchviewmodel.MonthlyTasks = refreshedNightWatch.MonthlyTasks
+            } label: {
+                Text("Yes, reset it")
+            }
+        } message: {
+            Text("Are You Sure?")
         }
     }
 }
@@ -99,8 +149,33 @@ struct TaskSectionHeader: View {
     }
 }
 
+struct TaskRow: View {
+    let task: NightWatchTasks
+    
+    var body: some View {
+        VStack {
+            if task.isCompleted {
+                HStack {
+                    Image(systemName: "checkmark.square")
+                    Text(task.name)
+                        .foregroundStyle(.gray)
+                    .strikethrough()
+                }
+            } else {
+                HStack {
+                    Image(systemName: "square")
+                    Text(task.name)
+                }
+            }
+        }
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
+#Preview {
+    ContentView(Nightwatchviewmodel: NightWatchViewModel())
 }

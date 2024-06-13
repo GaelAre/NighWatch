@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct DetailScreen: View {
-    let taskName: String
+    @Binding var task: NightWatchTasks
     
     var body: some View {
-        Text(taskName)
+        VStack
+        {
+            Text(task.name)
+            Button(action: {
+                task.isCompleted = true
+            }, label: {
+                Text("Mark Complete")
+            })
+        }
     }
 }
 
 #Preview {
-    DetailScreen(taskName: "Do this thing thing")
+    DetailScreen(task: .constant( NightWatchTasks(name: "Check everything", isCompleted: false)))
 }
