@@ -7,65 +7,98 @@
 
 import SwiftUI
 
+let nightlyTasks = [
+    "Check all the windows",
+    "Check all the doors",
+    "Check that the safe is locked",
+    "Check mailbox",
+    "Inspect security cameras",
+    "Clear ice from sidewalks",
+    "Document \"unusual and weird\" occurrences"
+]
+
+let WeeklyTasks = [
+    "Check inside all vacant rooms",
+    "Walk the perimeter of property"
+]
+
+let MonthlyTasks = [
+    "Test security alarm",
+    "Test motion detectors",
+    "Test smoke alarms"
+]
+
+
 struct ContentView: View 
 {
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text("Nightly Tasks")
-                    .font(.title3)
-                    .fontWeight(.heavy)
-                    .foregroundStyle(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    .textCase(.uppercase)
-                    .underline()
-                    .padding([.top, .bottom, .trailing], 1.0)
-                
-                Text("Check all the windows")
-                Text("Check all the doors")
-                Text("Check that the safe is locked")
-                Text("Check mailbox")
-                Text("Inspect security cameras")
-                Text("Clear ice from sidewalks")
-                Text("Document \"unusual and weird\" occurrences")
-                
-                Text("Weekly Tasks")
-                    .font(.title3)
-                    .fontWeight(.heavy)
-                    .foregroundStyle(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    .textCase(.uppercase)
-                    .underline()
-                    .padding([.top, .bottom, .trailing], 1.0)
-                Text("Check inside all vacant rooms")
-                Text("Walk the perimeter of property")
-                
-                
-                Text("Monthly Tasks")
-                    .font(.title3)
-                    .fontWeight(.heavy)
-                    .foregroundStyle(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    .textCase(.uppercase)
-                    .underline()
-                    .padding([.top, .bottom, .trailing], 1.0)
-                Text("Test security alarm")
-                Text("Test motion detectors")
-                Text("Test smoke alarms")
-                Spacer()
+        NavigationStack {
+            List {
+                Section(content: {
+                    ForEach(nightlyTasks, id: \.self) {
+                        taskname in
+                        NavigationLink(taskname) {
+                            DetailScreen(taskName: taskname)
+                        }
+                    }
+                }, header: {
+                    TaskSectionHeader(SymbolName: "moon.stars", HeaderText: "Nightly Tasks")
+                })
+                Section(content: {
+                    ForEach(WeeklyTasks, id: \.self) {
+                        taskname in
+                        NavigationLink(taskname) {
+                            DetailScreen(taskName: taskname)
+                        }
+                    }
+                }, header: {
+                    TaskSectionHeader(SymbolName: "sun.max", HeaderText: "Weekly Tasks")
+                })
+                Section(content: {
+                    ForEach(MonthlyTasks, id: \.self) {
+                        taskname in
+                        NavigationLink(taskname) {
+                            DetailScreen(taskName: taskname)
+                        }
+                    }
+                }, header: {
+                    TaskSectionHeader(SymbolName: "Calendar", HeaderText: "Monthly Tasks")
+                })
             }
-            .foregroundStyle(.gray)
-            Spacer()
+            .listStyle(GroupedListStyle())
+            .navigationTitle(Text("Home"))
         }
-        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 20.0)
     }
 }
 
-/*#Preview {
-    ContentView()
+struct HeaderStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.title3)
+            .fontWeight(.medium)
+            .foregroundColor(.orange)
+            .textCase(.uppercase)
+            .padding([.top, .bottom, .trailing], 1.0)
+    }
+}
+extension View {
+    func headerStyle() -> some View {
+        self.modifier(HeaderStyle())
+    }
 }
 
-#Preview ("Contentview Landscape", traits: .landscapeRight) {
-    ContentView()
+struct TaskSectionHeader: View {
+    let SymbolName: String
+    let HeaderText: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: SymbolName)
+            Text(HeaderText)
+        } .headerStyle()
+    }
 }
-*/
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
